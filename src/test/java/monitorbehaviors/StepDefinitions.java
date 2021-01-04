@@ -24,8 +24,8 @@ public class StepDefinitions {
         expectedId = client.createTODO(expectedContent);
     }
 
-    @Then("I should receive its identifier")
-    public void i_should_receive_its_identifier() {
+    @Then("I get its identifier")
+    public void i_get_its_identifier() {
         assertTrue(expectedId.length() > 0);
     }
 
