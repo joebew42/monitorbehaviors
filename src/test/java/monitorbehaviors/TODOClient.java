@@ -7,7 +7,7 @@ import static java.lang.String.format;
 public interface TODOClient {
     String createTODO(String content);
 
-    TODO findTODObyId(String todoId);
+    TODO findTODObyId(String todoId) throws TODONotFoundException;
 
     class TODO {
         private final String id;
@@ -36,4 +36,6 @@ public interface TODOClient {
             return Objects.hash(id, content);
         }
     }
+
+    class TODONotFoundException extends Exception {}
 }

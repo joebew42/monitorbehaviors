@@ -17,7 +17,10 @@ public class FakeTODOClient implements TODOClient {
     }
 
     @Override
-    public TODO findTODObyId(String todoId) {
+    public TODO findTODObyId(String todoId) throws TODONotFoundException {
+        if (!TODOs.containsKey(todoId)) {
+            throw new TODONotFoundException();
+        }
         return TODOs.get(todoId);
     }
 }
