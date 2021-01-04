@@ -16,7 +16,7 @@ This repository contains:
   - For the CLI
   - For the performance test
   - For synthetic monitoring
-- A simple backend API written in Elixir that allows to:
+- A simple backend API written in NodeJS that allows to:
     - Create a TODO (POST `/todos/`)
     - Get a TODO (GET `/todos/<ID>`)
     - List the TODOs (GET `/todos/`)
