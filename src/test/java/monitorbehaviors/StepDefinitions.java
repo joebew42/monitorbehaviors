@@ -5,7 +5,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import monitorbehaviors.TODOClient.TODO;
 import monitorbehaviors.TODOClient.TODONotFoundException;
-import org.hamcrest.MatcherAssert;
 
 import java.util.ArrayList;
 import java.util.List;
