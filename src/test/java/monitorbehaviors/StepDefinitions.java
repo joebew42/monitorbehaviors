@@ -5,10 +5,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import monitorbehaviors.TODOClient.TODO;
 import monitorbehaviors.TODOClient.TODONotFoundException;
+import org.hamcrest.MatcherAssert;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Collections.emptyList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -21,7 +23,8 @@ public class StepDefinitions {
     private Exception expectedException;
     private final List<TODO> expectedTODOs = new ArrayList<>();
 
-    private TODO actualTodo;
+    private TODO actualTODO;
+    private List<TODO> actualTODOs = emptyList();
 
     @When("I create a TODO")
     public void i_create_a_todo() {
@@ -42,7 +45,7 @@ public class StepDefinitions {
 
     @When("I try to get it")
     public void i_try_to_get_it() throws TODONotFoundException {
-        actualTodo = client.findTODObyId(expectedTODOs.get(0).id);
+        actualTODO = client.findTODObyId(expectedTODOs.get(0).id);
     }
 
     @When("I try to get a non existing TODO")
@@ -56,7 +59,7 @@ public class StepDefinitions {
 
     @Then("I can read its content")
     public void i_can_read_its_content() {
-        assertEquals(expectedTODOs.get(0), actualTodo);
+        assertEquals(expectedTODOs.get(0), actualTODO);
     }
 
     @Then("I get an error telling that the TODO was not found")
@@ -65,14 +68,12 @@ public class StepDefinitions {
     }
 
     @When("I access the list of TODOs")
-    public void i_access_the_list_of_tod_os() {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
+    public void i_access_the_list_of_todos() {
+        actualTODOs = client.allTODOs();
     }
 
     @Then("I can see all the TODOs")
-    public void i_can_see_all_the_tod_os() {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
+    public void i_can_see_all_the_todos() {
+        assertTrue(expectedTODOs.containsAll(actualTODOs));
     }
 }

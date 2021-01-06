@@ -31,6 +31,6 @@ gradle cucumber
 
 ## TODO
 
-- Write a test to list all the available TODOs
+- [?] How it will look like when integrate Gatling for load/performance test? 
 - [R] Can I refactor the acceptance test to accept a list of TODO instead of using two different steps?
     - See the `i_can_list_all_the_todos.feature`

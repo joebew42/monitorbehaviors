@@ -1,7 +1,7 @@
 package monitorbehaviors;
 
+import java.util.List;
 import java.util.Objects;
-import java.util.StringJoiner;
 
 import static java.lang.String.format;
 
@@ -9,6 +9,8 @@ public interface TODOClient {
     String createTODO(String content);
 
     TODO findTODObyId(String todoId) throws TODONotFoundException;
+
+    List<TODO> allTODOs();
 
     class TODO {
         public final String id;

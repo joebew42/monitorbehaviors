@@ -1,7 +1,6 @@
 package monitorbehaviors;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static java.util.UUID.randomUUID;
 
@@ -22,5 +21,10 @@ public class FakeTODOClient implements TODOClient {
             throw new TODONotFoundException();
         }
         return TODOs.get(todoId);
+    }
+
+    @Override
+    public List<TODO> allTODOs() {
+        return new ArrayList<>(TODOs.values());
     }
 }
