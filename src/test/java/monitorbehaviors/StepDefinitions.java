@@ -6,38 +6,43 @@ import io.cucumber.java.en.When;
 import monitorbehaviors.TODOClient.TODO;
 import monitorbehaviors.TODOClient.TODONotFoundException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class StepDefinitions {
 
+    public static final String WITH_AN_EMPTY_CONTENT = "";
+
     private final TODOClient client = new FakeTODOClient();
 
-    private String expectedId = "";
-    private String expectedContent = "";
     private Exception expectedException;
+    private final List<TODO> expectedTODOs = new ArrayList<>();
 
     private TODO actualTodo;
 
     @When("I create a TODO")
     public void i_create_a_todo() {
-        expectedId = client.createTODO(expectedContent);
+        String id = client.createTODO(WITH_AN_EMPTY_CONTENT);
+        expectedTODOs.add(new TODO(id, WITH_AN_EMPTY_CONTENT));
     }
 
     @Then("I get its identifier")
     public void i_get_its_identifier() {
-        assertTrue(expectedId.length() > 0);
+        assertTrue(expectedTODOs.get(0).id.length() > 0);
     }
 
     @Given("An existing TODO with content {string}")
     public void an_existing_todo_with_content(String content) {
-        expectedContent = content;
-        expectedId = client.createTODO(content);
+        String id = client.createTODO(content);
+        expectedTODOs.add(new TODO(id, content));
     }
 
     @When("I try to get it")
     public void i_try_to_get_it() throws TODONotFoundException {
-        actualTodo = client.findTODObyId(expectedId);
+        actualTodo = client.findTODObyId(expectedTODOs.get(0).id);
     }
 
     @When("I try to get a non existing TODO")
@@ -51,11 +56,23 @@ public class StepDefinitions {
 
     @Then("I can read its content")
     public void i_can_read_its_content() {
-        assertEquals(new TODO(expectedId, expectedContent), actualTodo);
+        assertEquals(expectedTODOs.get(0), actualTodo);
     }
 
     @Then("I get an error telling that the TODO was not found")
     public void i_get_an_error_telling_that_the_todo_was_not_found() throws Exception {
         assertEquals(expectedException.getClass(), TODONotFoundException.class);
+    }
+
+    @When("I access the list of TODOs")
+    public void i_access_the_list_of_tod_os() {
+        // Write code here that turns the phrase above into concrete actions
+//        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("I can see all the TODOs")
+    public void i_can_see_all_the_tod_os() {
+        // Write code here that turns the phrase above into concrete actions
+//        throw new io.cucumber.java.PendingException();
     }
 }
