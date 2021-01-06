@@ -31,7 +31,8 @@ gradle cucumber
 
 ## TODO
 
-- Add a `RestAPI` Client 
-- [?] How it will look like when integrate Gatling for load/performance test? 
+- [F] Being able to switch between client implementations
+- [?] How it will look like when integrate Gatling for load/performance test?
+- [R] Review the names used to describe the `i_can_read_a_todo.feature`
 - [R] Can I refactor the acceptance test to accept a list of TODO instead of using two different steps?
     - See the `i_can_list_all_the_todos.feature`

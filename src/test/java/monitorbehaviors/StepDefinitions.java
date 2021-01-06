@@ -15,9 +15,10 @@ import static org.junit.Assert.assertTrue;
 
 public class StepDefinitions {
 
+    public static final String NON_EXISTING_ID = "NON-EXISTING-ID";
     public static final String WITH_AN_EMPTY_CONTENT = "";
 
-    private final TODOClient client = new FakeTODOClient();
+    private final TODOClient client = new RestAPITODOClient();
 
     private Exception expectedException;
     private final List<TODO> expectedTODOs = new ArrayList<>();
@@ -50,7 +51,7 @@ public class StepDefinitions {
     @When("I try to get a non existing TODO")
     public void i_try_to_get_a_non_existing_todo() {
         try {
-            client.findTODObyId("NON EXISTING ID");
+            client.findTODObyId(NON_EXISTING_ID);
         } catch (TODONotFoundException e) {
             expectedException = e;
         }
