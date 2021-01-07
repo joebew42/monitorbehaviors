@@ -44,7 +44,6 @@ TEST_SUITE=restapi gradle cucumber
 
 ## TODO
 
-- [R] Move the method `createClientFor` to another class
 - [R] We should find a better name than `TEST_NAME` for the environment variable
     - e.g. `CLIENT_IMPLEMENTATION`
 - [?] How it will look like when integrate Gatling for load/performance test?
