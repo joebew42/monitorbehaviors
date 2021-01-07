@@ -44,7 +44,11 @@ CLIENT_IMPLEMENTATION=restapi gradle cucumber
 
 ## TODO
 
-- [?] How it will look like when integrate Gatling for load/performance test?
+- Create a web UI using a JavaScript framework (React, AngularJS, other)
+  - The WebUI should then consume the RestAPI Backend
+- Create a NodeJS application to expose the RestAPI as documented [here](https://todolist1.docs.apiary.io/).
+- How it will look like when integrate [Gatling](https://gatling.io/) for load/performance test?
 - [R] Review the names used to describe the `i_can_read_a_todo.feature`
 - [R] Can I refactor the acceptance test to accept a list of TODO instead of using two different steps?
     - See the `i_can_list_all_the_todos.feature`
+- Understand how to implement a client for Synthetic monitoring
