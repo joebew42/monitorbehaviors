@@ -14,11 +14,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class StepDefinitions {
+    public static final String CLIENT_IMPLEMENTATION = "CLIENT_IMPLEMENTATION";
 
     public static final String NON_EXISTING_ID = "NON-EXISTING-ID";
     public static final String WITH_AN_EMPTY_CONTENT = "";
 
-    private final TODOClient client = ClientFactory.createFrom(System.getenv("TEST_SUITE"));
+    private final TODOClient client = ClientFactory.createFrom(System.getenv(CLIENT_IMPLEMENTATION));
 
     private Exception expectedException;
     private final List<TODO> expectedTODOs = new ArrayList<>();
