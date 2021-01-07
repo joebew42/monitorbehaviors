@@ -29,9 +29,24 @@ This repository contains:
 gradle cucumber
 ```
 
+It will run with a Fake client implementation.
+
+## How to run a different client implementation
+
+You can set the environment variable `TEST_SUITE` to choose which client to run:
+
+- choose `fake` (default value), to run the fake implementation
+- choose `restapi`, to run the Rest API client implementation
+
+```
+TEST_SUITE=restapi gradle cucumber
+```
+
 ## TODO
 
-- [F] Being able to switch between client implementations
+- [R] Move the method `createClientFor` to another class
+- [R] We should find a better name than `TEST_NAME` for the environment variable
+    - e.g. `CLIENT_IMPLEMENTATION`
 - [?] How it will look like when integrate Gatling for load/performance test?
 - [R] Review the names used to describe the `i_can_read_a_todo.feature`
 - [R] Can I refactor the acceptance test to accept a list of TODO instead of using two different steps?

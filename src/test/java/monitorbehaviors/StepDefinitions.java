@@ -14,11 +14,19 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class StepDefinitions {
+    public static final String TEST_NAME_RESTAPI = "restapi";
 
     public static final String NON_EXISTING_ID = "NON-EXISTING-ID";
     public static final String WITH_AN_EMPTY_CONTENT = "";
 
-    private final TODOClient client = new RestAPITODOClient();
+    private final TODOClient client = createClientFor(System.getenv("TEST_SUITE"));
+
+    private TODOClient createClientFor(String testName) {
+        if (TEST_NAME_RESTAPI.equals(testName)) {
+            return new RestAPITODOClient();
+        }
+        return new FakeTODOClient();
+    }
 
     private Exception expectedException;
     private final List<TODO> expectedTODOs = new ArrayList<>();
