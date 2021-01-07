@@ -44,7 +44,8 @@ CLIENT_IMPLEMENTATION=restapi gradle cucumber
 
 ## TODO
 
-- Create a web UI using a JavaScript framework (React, AngularJS, other)
+- Start working on a `WebUITODOClient` implementation
+- Create a web UI using a JavaScript framework (React, AngularJS, or just no frameworks)
   - The WebUI should then consume the RestAPI Backend
 - Create a NodeJS application to expose the RestAPI as documented [here](https://todolist1.docs.apiary.io/).
 - How it will look like when integrate [Gatling](https://gatling.io/) for load/performance test?
